@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  log-server:
+    build: .
+    container_name: log-engine-server
+    ports:
+      - "50051:50051"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./data:/root/data  # Persists your logs even if the container stops
+    restart: unless-stopped
+
+  # Note: The client is usually run manually to trigger tests, 
+  # but we can build it into the same image via the Dockerfile.

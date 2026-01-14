@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package logging;
+option go_package = "github.com/aanilgeo/log-engine/proto/logging";
+
+service LogService {
+  rpc SendLog (LogRequest) returns (LogResponse) {}
+  rpc SearchLogs (SearchRequest) returns (SearchResponse) {}
+  rpc SummarizeLogs (SummaryRequest) returns (SummaryResponse) {}
+}
+
+message LogRequest {
+  string app_id = 1;
+  string level = 2; 
+  string message = 3;
+  int64 timestamp = 4;
+}
+
+message LogResponse {
+  bool success = 1;
+}
+
+message SearchRequest {
+  string app_id = 1;
+  string level = 2;
+}
+
+message SearchResponse {
+  repeated LogRequest results = 1;
+}
+
+message SummaryRequest {
+  string app_id = 1; // Optional
+}
+
+message SummaryResponse {
+  string summary = 1;
+}

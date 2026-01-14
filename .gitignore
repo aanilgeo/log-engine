@@ -1,0 +1,21 @@
+# Binaries
+server
+client
+*.exe
+
+# Keys and Environment
+.env
+data/segments/*.seg
+data/*.seg
+
+# OS specific
+.DS_Store
+
+# Test artifacts
+*.test
+*.out
+vendor/
+
+# IDE specific (if you use them)
+.vscode/
+.idea/
